@@ -31,7 +31,7 @@ int main ()
 	else {
 		std::cout << "Сосал?" << std::endl;
 	}
-
+	//
 }
 
 
