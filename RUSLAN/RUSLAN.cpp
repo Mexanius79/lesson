@@ -1,6 +1,52 @@
 #include <iostream>
 #include <Windows.h>
 
+void tune ()
+{
+	std::string tune;
+	std::cin >> tune;
+	std::cout <<  tune;
+}
+
+void game1()
+{
+
+	std::string x[3]{ "stone","scissors","paper" };
+	std::string user;
+	for (int i = 0; i < 5; i++)
+	{
+		int r = rand() % 3;
+		std::cout << x[r] << std::endl;
+		std::cin >> user;
+
+		if (user == x[0] || user == x[1] || user == x[2]) 
+		{
+
+
+			if (user == x[0] && x[r] == x[1] ||
+				user == x[2] && x[r] == x[0] ||
+				user == x[1] && x[r] == x[2])
+			{
+				std::cout << "Win" << std::endl;
+			}
+			else if (user == x[r])
+			{
+				std::cout << "draw\n";
+			}
+			else
+			{
+				std::cout << "lose\n";
+			}
+
+
+		}
+		else
+		{
+			std::cout << "ops!\n";
+		}
+	}
+}
+	
 void game()
 {
 	std::cout << "1. Камень\n2. Ножницы\n3. Бумага\n";
@@ -52,19 +98,13 @@ void sup ()
 			
 		}
 
-		std::cout << mas[i] << "\v"; // Горизонтальная
+		std::cout << mas[i] << ""; // Горизонтальная
 		std::cout << std::endl;
 	}
 	
 }
 
 
-void tune ()
-{
-	std::string tune;
-	std::cin >> tune;
-	std::cout <<  tune;
-}
 
 
 void num()
@@ -106,13 +146,15 @@ void mas2() //только отрицательные
 		}
 	}
 }
-void mas3()
+void mas3() 
 {
 	int x[4]{ -2,4,2,-10 };
 	for (int i = 0; i < 4;i++)
 	{
-		if (x[i] *< 0)
+		if (x[i] < 0)
 		{
+			x[i] = x[i] * -1; // Все положительные
+			//x[i] *= -1;
 			
 		}
 		std::cout << x[i] << std::endl;
@@ -126,9 +168,11 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
-	mas3(); // Все положительные
+
+	//mas3(); // Все положительные
 	//mas2(); // Только отрицальные /положительные
 	//mas1(); //Обычное перечисление
+	game1();
 	//game();
 	//tune();
 	//sup ();
